@@ -1,0 +1,8 @@
+testBuddy.out : TestBuddy.o WeightedBuddy.o
+	gcc TestBuddy.o WeightedBuddy.o -lm -o testBuddy.out
+
+TestBuddy.o: TestBuddy.c WeightedBuddy.h
+	gcc -c TestBuddy.c
+
+WeightedBuddy.o : WeightedBuddy.c WeightedBuddy.h
+	gcc -c WeightedBuddy.c

@@ -1,0 +1,14 @@
+testPoly.out : TestPolynomialBuddy.o Polynomials_Buddy.o WeightedBuddy.o utils.o
+	gcc TestPolynomialBuddy.o Polynomials_Buddy.o WeightedBuddy.o utils.o -lm -o testPoly.out
+
+TestPolynomialBuddy.o: TestPolynomialBuddy.c Polynomials.h WeightedBuddy.h
+	gcc -c TestPolynomialBuddy.c
+
+Polynomials_Buddy.o : Polynomials_Buddy.c Polynomials.h WeightedBuddy.h utils.h
+	gcc -c Polynomials_Buddy.c
+
+WeightedBuddy.o : WeightedBuddy.c WeightedBuddy.h
+	gcc -c WeightedBuddy.c
+
+utils.o : utils.c utils.h
+	gcc -c utils.c

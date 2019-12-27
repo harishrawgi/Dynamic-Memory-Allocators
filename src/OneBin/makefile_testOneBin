@@ -1,0 +1,8 @@
+testOneBin.out : TestOneBin.o OneBin.o
+	gcc TestOneBin.o OneBin.o -o testOneBin.out -w
+
+TestOneBin.o: TestOneBin.c OneBin.h
+	gcc -c TestOneBin.c -w
+
+OneBin.o : OneBin.c OneBin.h
+	gcc -c OneBin.c -w

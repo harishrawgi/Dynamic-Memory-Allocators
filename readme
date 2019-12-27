@@ -1,0 +1,105 @@
+-----------------------------------Implementation of Dynamic Memory Allocators--------------------------------------------------------------
+
+Part of IISc E0 251 DSA course
+Developed towards the fulfilment of Assignment 5 of the mentioned course
+
+Developed by: Hari Shrawgi
+
+Language: C, Python
+Libraries Used (C): stdlib, stdio, time, math
+Libraries Used (Python): numpy
+
+-----------------------------------Implementation of Dynamic Memory Allocators--------------------------------------------------------------
+
+1. Basic Introduction
+----------------------
+
+All the src code has been written to implement two different types of dynamic memory allocators. First is a variation
+of the traditional exponential buddy system. It is a weighted buddy system and was proposed by Shen & Peterson [1].
+Second method is a fixed bin size allocator which allocates a fixed block of memory when called.
+
+We perform an in-depth study of the S&P allocator as done in their paper. We also use the Polynomial arithematic
+program developed in Assignment-2 to test the allocators. We finally compare these two allocators using this Polynomial
+program. Also, we compare them with the standard C allocator.
+
+2. Salient Features
+--------------------
+
+General features:
+
+- The implementation tries to be as modular and abstract as possible
+- The different modules are very loosely coupled
+- The OneBin implementation is very simple and fast (both free and malloc operation in O(1))
+- Proper instrumentation is developed and also proper getters are created to fetch the analysis data
+- There are simple test programs also created along with the required simulation and polynomial programs
+
+3. Code description
+--------------------
+
+The src code is divided into three components:
+
+A. Buddy:
+
+This is the part that deals with the S&P allocator. There are 4 different makefiles in this, each
+associated with different test programs that you may want to run.
+
+The polynomial files are related to the Polynomial arithematic program, which have been modified
+to use the WeightedBuddy memory allocator. The file "poly_input" has the input required for the Testing
+program related to this.
+
+There is a TestBuddy program which is a basic program that tests the allocator.
+
+The Simulation files are for performing the synthetic request generation according to [1]. For the
+exponential simulation, we use the "exp.txt" file which stores values taken from a truncated exp distribution.
+This file was generated using Python.
+
+The core allocator code is in the two files "WeightedBuddy.c" and "WeightedBuddy.h".
+
+B. OneBin:
+
+This is the part that deals with the OneBin allocator. There are 2 diff makefiles in this, each associated
+with the diff test programs.
+
+The polynomial files are related to the Polynomial arithematic program, which have been modified
+to use the OneBin memory allocator. The file "poly_input" has the input required for the Testing
+program related to this.
+
+There is a TestOneBin program which is a basic program that tests the allocator.
+
+The core allocator code is the two files "OneBin.c" and "OneBin.h".
+
+C. Polynomials_base:
+
+This part is basically the vanilla polynomial program from Assignment-2 with some minor changes to
+perform analysis. It uses the std malloc() and free() calls.
+
+4. Python component
+--------------------
+
+Python isused to generate exponential distribution.
+
+To run the python scripts you may need to install numpy library. The command for it is as follows using pip:
+  pip install numpy
+
+There is a Jupyter notebook "exponential_distribution.ipynb" containing the code to generate the distribution.
+
+
+4. Analysis of the implementations
+---------------------------------------
+
+The analysis of the implementations is present in the analysis folder. There is a report attached in the folder
+detailing the methods used, and the results of the analysis.
+
+
+5. Testing
+----------
+
+Performing testing is simple. Just use the corresponding makefiles and then run the program. Only for the
+polynomial tests, we need an input, that is also provided in the folder.
+
+
+References
+-----------
+
+  [1] Shen, Kenneth K., and James L. Peterson. "A weighted buddy method for dynamic storage allocation." Communications of the ACM 17.10 (1974): 558-562.
+------------------------------------------------------X---------------------------------------------x------------------------------------------

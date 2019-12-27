@@ -1,0 +1,11 @@
+testPoly.out : TestPolynomial.o Polynomials.o utils.o
+	gcc TestPolynomial.o Polynomials.o utils.o -o testPoly.out
+
+TestPolynomial.o: TestPolynomial.c Polynomials.h
+	gcc -c TestPolynomial.c
+
+Polynomials.o : Polynomials.c Polynomials.h utils.h
+	gcc -c Polynomials.c
+
+utils.o : utils.c utils.h
+	gcc -c utils.c

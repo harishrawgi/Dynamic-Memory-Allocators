@@ -1,0 +1,11 @@
+simulateUniform.out : SimulateUniformBuddy.o SimulateBuddyHelper.o WeightedBuddy.o
+	gcc SimulateUniformBuddy.o SimulateBuddyHelper.o WeightedBuddy.o -lm -o simulateUniform.out
+
+SimulateUniformBuddy.o: SimulateUniformBuddy.c SimulateBuddyHelper.h WeightedBuddy.h
+	gcc -c SimulateUniformBuddy.c
+
+SimulateBuddyHelper.o: SimulateBuddyHelper.c SimulateBuddyHelper.h WeightedBuddy.h
+	gcc -c SimulateBuddyHelper.c
+
+WeightedBuddy.o : WeightedBuddy.c WeightedBuddy.h
+	gcc -c WeightedBuddy.c

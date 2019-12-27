@@ -1,0 +1,11 @@
+simulateExponential.out : SimulateExponentialBuddy.o SimulateBuddyHelper.o WeightedBuddy.o
+	gcc SimulateExponentialBuddy.o SimulateBuddyHelper.o WeightedBuddy.o -lm -o simulateExponential.out
+
+SimulateExponentialBuddy.o: SimulateExponentialBuddy.c SimulateBuddyHelper.h WeightedBuddy.h
+	gcc -c SimulateExponentialBuddy.c
+
+SimulateBuddyHelper.o: SimulateBuddyHelper.c SimulateBuddyHelper.h WeightedBuddy.h
+	gcc -c SimulateBuddyHelper.c
+
+WeightedBuddy.o : WeightedBuddy.c WeightedBuddy.h
+	gcc -c WeightedBuddy.c

@@ -1,0 +1,14 @@
+testPoly.out : TestPolynomialOneBin.o Polynomials_OneBin.o OneBin.o utils.o
+	gcc TestPolynomialOneBin.o Polynomials_OneBin.o OneBin.o utils.o -o testPoly.out -w
+
+TestPolynomialOneBin.o: TestPolynomialOneBin.c Polynomials.h OneBin.h
+	gcc -c TestPolynomialOneBin.c -w
+
+Polynomials_OneBin.o : Polynomials_OneBin.c Polynomials.h OneBin.h utils.h
+	gcc -c Polynomials_OneBin.c -w
+
+OneBin.o : OneBin.c OneBin.h
+	gcc -c OneBin.c -w
+
+utils.o : utils.c utils.h
+	gcc -c utils.c
